@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: "Times New Roman", "Tinos", "Times", serif;
+  }
+}
+
+/* Academic Paper Styles - TCVN 6909:2001 Standard */
+.academic-font {
+  font-family: "Times New Roman", "Tinos", "Times", serif;
+}
+
+/* Page Setup for Screen Preview */
+.a4-page-screen {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 22mm 20mm 20mm 30mm; /* Top: 22mm, Right: 20mm, Bottom: 20mm, Left: 30mm */
+  margin: 0 auto 28px auto;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Bìa chính (Cover Page Screen Preview) - Vừa vặn hoàn hảo không tràn */
+.cover-page-screen {
+  width: 210mm;
+  height: 297mm;
+  max-height: 297mm;
+  padding: 15mm 18mm 15mm 25mm; /* Chuẩn lề bìa */
+  margin: 0 auto 28px auto;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Khung viền đôi chuẩn bài thi tiểu luận đại học */
+.cover-frame-outer {
+  border: 3px double #000000;
+  padding: 8px;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.cover-frame-inner {
+  border: 1px solid #000000;
+  padding: 16px 18px;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+/* Footer chỉ hiển thị số trang chính giữa */
+.page-footer-center {
+  margin-top: 14px;
+  padding-top: 4px;
+  text-align: center;
+  font-size: 11pt;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Academic Text Typography */
+.academic-body {
+  font-size: 13pt;
+  line-height: 1.5;
+  color: #111827;
+  text-align: justify;
+}
+
+.academic-body p {
+  text-indent: 1.0cm;
+  margin-bottom: 0.5em;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.academic-body p.no-indent {
+  text-indent: 0;
+}
+
+.heading-chapter {
+  font-size: 15pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0.9rem;
+  line-height: 1.35;
+  color: #0f172a;
+}
+
+.heading-section {
+  font-size: 13.5pt;
+  font-weight: 700;
+  text-align: left;
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  line-height: 1.35;
+  color: #1e293b;
+}
+
+.heading-subsection {
+  font-size: 13pt;
+  font-weight: 700;
+  font-style: italic;
+  text-align: left;
+  margin-top: 0.8rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
+  color: #334155;
+}
+
+.figure-caption {
+  font-size: 11pt;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.4rem;
+  margin-bottom: 0.9rem;
+  color: #374151;
+}
+
+.table-caption {
+  font-size: 11.5pt;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.4rem;
+  color: #1f2937;
+}
+
+.academic-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11pt;
+  margin: 0.7rem 0;
+}
+
+.academic-table th,
+.academic-table td {
+  border: 1px solid #1f2937;
+  padding: 5px 8px;
+  vertical-align: middle;
+}
+
+.academic-table th {
+  background-color: #f1f5f9;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ========================================================= */
+/* CSS PRINT HOÀN CHỈNH - CHỐNG TÁCH TRANG, CHUẨN A4 100% */
+/* ========================================================= */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 15mm 25mm; /* Chuẩn đóng gáy: Trái 25mm, Phải 15mm, Trên 15mm, Dưới 15mm */
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 13pt !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Ẩn toàn bộ các nút bấm và giao diện phụ */
+  .no-print,
+  nav,
+  header,
+  footer,
+  aside,
+  button,
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Bìa in chuẩn 1 trang duy nhất, tuyệt đối không bị tràn rách sang trang 2 */
+  .cover-page-screen {
+    width: 100% !important;
+    height: 255mm !important;
+    max-height: 255mm !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    page-break-before: avoid !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .cover-frame-outer {
+    border: 3px double #000000 !important;
+    height: 252mm !important;
+    max-height: 252mm !important;
+    padding: 6px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .cover-frame-inner {
+    border: 1px solid #000000 !important;
+    height: 100% !important;
+    padding: 14px 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Các trang nội dung tự động ngắt trang tự nhiên */
+  .a4-page-screen {
+    width: 100% !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 0 10mm 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .page-break {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .keep-together,
+  .academic-table,
+  svg,
+  figure {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .academic-body p {
+    orphans: 3;
+    widows: 3;
+  }
+}

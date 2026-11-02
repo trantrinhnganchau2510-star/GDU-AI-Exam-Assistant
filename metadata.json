@@ -1,0 +1,6 @@
+{
+  "name": "Tiểu luận Trợ lý ảo AI - ĐH Gia Định",
+  "description": "5 file bài tiểu luận học thuật hoàn chỉnh môn Nhập môn Công nghệ số và Trí tuệ nhân tạo (GDU) - Hỗ trợ xem trước chuẩn A4, in và xuất PDF",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
